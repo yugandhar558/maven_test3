@@ -3,55 +3,65 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>calculator</groupId>
-  <artifactId>addition</artifactId>
+  <artifactId>calculator-main</artifactId>
   <version>1.0</version>
-  
+  <packaging>pom</packaging>
 
   <name>calculator_addition</name>
 
+  <modules>
+    <module>addition</module>
+    <module>substraction</module>
+  </modules>
+
   <properties>
-	  <maven.compiler.source>1.6</maven.compiler.source>
-	  <maven.compiler.target>1.6</maven.compiler.target>
+    <junit.version>2.19.1</junit.version>
   </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>servlet-api</artifactId>
-      <version>2.5</version>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven.surefire</groupId>
-      <artifactId>surefire-junit4</artifactId>
-      <version>2.19.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-jdeprscan-plugin</artifactId>
-      <version>3.0.0-alpha-1</version>
-      <scope>compile</scope>
-    </dependency>
-  </dependencies>
+  <dependencyManagement>
+      <dependencies>
+        <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>servlet-api</artifactId>
+          <version>2.5</version>
+        </dependency>
+        <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>3.8.1</version>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.maven.surefire</groupId>
+          <artifactId>surefire-junit4</artifactId>
+          <version>${junit.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jdeprscan-plugin</artifactId>
+          <version>3.0.0-alpha-1</version>
+          <scope>compile</scope>
+          <exclusions>
+                <exclusion>
+                  <groupId>org.sonatype.sisu</groupId>
+                  <artifactId>sisu-guice</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+      </dependencies>
+   </dependencyManagement>
 
   <build>
-       <plugins>
-	 <plugin>
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-site-plugin</artifactId>
-  <version>3.7.1</version>
-	</plugin>
-	<plugin>
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-project-info-reports-plugin</artifactId>
-  <version>3.0.0</version>
-	</plugin>
-	<plugin>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+            <source>1.6</source>
+            <target>1.6</target>
+         </configuration>
+    </plugin>
+     <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>tidy-maven-plugin</artifactId>
           <version>1.1.0</version>
@@ -65,6 +75,6 @@
             </execution>
           </executions>
       </plugin>
-        </plugins>
-    </build>
+    </plugins>
+   </build>
 </project>

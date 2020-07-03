@@ -5,6 +5,7 @@
   <groupId>calculator</groupId>
   <artifactId>addition</artifactId>
   <version>1.0</version>
+  <packaging>war</packaging>	
 
   <name>calculator_addition</name>
 

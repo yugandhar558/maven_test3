@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-      stage("Git Checkout){
+      stage("Git Checkout"){
            steps{
            // Get some code from a GitHub repository
             git 'https://github.com/yugandhar558/maven_test3.git'

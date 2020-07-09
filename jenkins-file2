@@ -17,6 +17,11 @@ pipeline{
                //Build sample web apps using maven 
                sh "mvn clean package"
                  }     
-                           }          
+                           }
+       stage("tomcat-deploy"){
+            steps{
+                sh "sudo cp /var/lib/jenkins/workspace/second_test_pipeline/target/JenkinsWar.war  /opt/apache-tomcat-7.0.104/webapps/"
+                 }
+                             }                    
             }
           }

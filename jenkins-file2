@@ -1,3 +1,5 @@
+currentBuild.displayName = "test-pipeline-#"+currentBuild.number
+
 pipeline{
     agent any
     environment{
